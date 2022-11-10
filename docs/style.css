@@ -1,0 +1,184 @@
+/* Skinny scrollbars */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #afafaf;
+  opacity: 0.5;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #8f8f8f;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background: #8f8f8f;
+}
+
+
+body {
+  background-color: #1a1a1a;
+  font-family: "Lucida Console", Monaco, monospace;
+  color: #afafaf;
+  list-style-type: square;
+  display: inline;
+}
+
+.container {
+  /* A wall of cards tiled together to form a grid */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+  grid-auto-rows: minmax(100px, auto);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #0f0f0f;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin: 20px;
+  position: relative;
+}
+
+.container > h1 {
+  /* The title of the grid */
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 2em;
+  color: #afafaf;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  /* A card in the grid */
+  background-color: #1a1a1a;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  margin: 20px;
+  position: relative;
+  scale: 1;
+  transition: 0.5s;
+}
+
+.item.completed {
+  /* A completed card in the grid */
+  background-color: #000000;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  margin: 20px;
+  position: relative;
+  scale: 1;
+  transition: 0.5s;
+  opacity: 0.2;
+}
+
+.item.completed:hover {
+  opacity: 0.5;
+}
+
+.item:hover {
+  scale: 1.1;
+}
+
+.item > .title {
+  /* A title for the card */
+  font-size: 24px;
+  color: #afafaf;
+  margin: 20px;
+}
+
+.item > .desc {
+  /* A card's description */
+  font-size: 16px;
+  color: #afafaf;
+  margin: 20px;
+  min-width: 200px;
+  filter: blur(5px);
+  transition: 2s;
+}
+
+.item:hover > .desc {
+  filter: blur(0px);
+}
+
+.item > .date {
+  /* A date for the card which is displayed in the bottom right corner */
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 11px;
+  color: #afafaf;
+  margin: 20px 10px 10px 20px;
+  cursor: help;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Fade in and out the date when hovering over the card */
+.item:hover > .date {
+  opacity: 1;
+}
+
+.item > .desc > a {
+  /* A link in the card's description */
+  color: #00c79a;
+  text-decoration: underline dotted #00c79a;
+}
+
+.copyright {
+  /* Copyright text at the bottom-center of the page */
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  font-size: 12px;
+  color: #afafaf;
+}
+
+@media (max-width: 600px) {
+  .container {
+    /* If the screen is too small, make the grid a single column */
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .item > .title {
+    /* If the screen is too small, make the title smaller */
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 300px) {
+  .item > .title {
+    /* If the screen is too small, make the title even smaller */
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 200px) {
+  .item > .title {
+    /* If the screen is too small, make the title even smaller */
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 100px) {
+  .item > .title {
+    /* If the screen is too small, make the title even smaller */
+    font-size: 8px;
+  }
+}
