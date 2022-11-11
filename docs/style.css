@@ -68,6 +68,11 @@ body {
   transition: 0.5s;
 }
 
+.span-2 {
+  /* A card that spans 2 columns */
+  grid-column: span 2;
+}
+
 .item.completed {
   /* A completed card in the grid */
   background-color: #000000;
